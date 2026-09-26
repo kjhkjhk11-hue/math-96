@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>اليوم الوطني 96 | المتباينات</title>
+<style>
+body{
+ margin:0;font-family:Arial;background:#f5f1e8;
+ text-align:center;color:#173d32
+}
+header{
+ background:#087b58;color:white;padding:18px
+}
+h1{margin:5px;font-size:27px}
+.card{
+ max-width:900px;margin:18px auto;background:white;
+ padding:18px;border-radius:20px;
+ box-shadow:0 4px 18px #0002
+}
+canvas{
+ width:100%;max-width:650px;
+ border:2px solid #087b58;border-radius:15px;
+ background:#fff
+}
+button{
+ background:#087b58;color:white;border:0;
+ padding:12px 20px;margin:8px;border-radius:12px;
+ font-size:17px
+}
+.teacher{
+ font-size:19px;font-weight:bold;margin:15px
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🇸🇦 اليوم الوطني السعودي ٩٦ 🇸🇦</h1>
+<div>الرياضيات في حب الوطن</div>
+</header>
+
+<div class="card">
+<h2>تمثيل المتباينات لتكوين الرقم ٩٦</h2>
+
+<p>
+مثّلي المتباينات على المستوى الإحداثي، ثم اكتشفي الشكل الناتج ✨
+</p>
+
+<canvas id="graph" width="650" height="500"></canvas>
+
+<div>
+<button onclick="draw96()">إظهار الحل ٩٦</button>
+<button onclick="clearGraph()">إخفاء الحل</button>
+</div>
+
+<h3>متباينات النشاط</h3>
+
+<p>
+① y ≥ -0.8x + 5 &nbsp;&nbsp; y ≤ 0.8x + 13
+</p>
+
+<p>
+② y ≥ 0.8x - 11 &nbsp;&nbsp; y ≤ -0.8x + 29
+</p>
+
+<p>
+③ x ≥ -8 &nbsp;&nbsp; x ≤ -2
+</p>
+
+<p>
+④ y ≥ -6 &nbsp;&nbsp; y ≤ 6
+</p>
+
+<p>💚 دام عزك يا وطن 💚</p>
+
+<div class="teacher">
+المعلمة: أفنان الأحمدي
+</div>
+
+</div>
+
+<script>
+const c=document.getElementById("graph");
+const ctx=c.getContext("2d");
+
+function grid(){
+ ctx.clearRect(0,0,c.width,c.height);
+ ctx.strokeStyle="#ddd";
+ ctx.lineWidth=1;
+
+ for(let x=25;x<c.width;x+=25){
+  ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,c.height);ctx.stroke();
+ }
+
+ for(let y=25;y<c.height;y+=25){
+  ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(c.width,y);ctx.stroke();
+ }
+
+ ctx.strokeStyle="#555";
+ ctx.lineWidth=2;
+
+ ctx.beginPath();
+ ctx.moveTo(c.width/2,0);
+ ctx.lineTo(c.width/2,c.height);
+ ctx.stroke();
+
+ ctx.beginPath();
+ ctx.moveTo(0,c.height/2);
+ ctx.lineTo(c.width,c.height/2);
+ ctx.stroke();
+}
+
+function draw96(){
+ grid();
+
+ ctx.strokeStyle="#087b58";
+ ctx.lineWidth=18;
+ ctx.lineCap="round";
+
+ // الرقم 9
+ ctx.beginPath();
+ ctx.arc(220,190,75,0,Math.PI*2);
+ ctx.stroke();
+
+ ctx.beginPath();
+ ctx.moveTo(285,210);
+ ctx.quadraticCurveTo(285,330,195,365);
+ ctx.stroke();
+
+ // الرقم 6
+ ctx.beginPath();
+ ctx.moveTo(465,130);
+ ctx.quadraticCurveTo(365,175,385,310);
+ ctx.stroke();
+
+ ctx.beginPath();
+ ctx.arc(450,310,72,0,Math.PI*2);
+ ctx.stroke();
+}
+
+function clearGraph(){
+ grid();
+}
+
+grid();
+</script>
+
+</body>
+</html>
