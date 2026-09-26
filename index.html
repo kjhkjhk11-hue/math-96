@@ -3,145 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>اليوم الوطني 96 | المتباينات</title>
+<title>اليوم الوطني السعودي 96</title>
+
 <style>
+*{box-sizing:border-box}
 body{
- margin:0;font-family:Arial;background:#f5f1e8;
- text-align:center;color:#173d32
+  margin:0;background:#07101f;color:#fff;
+  font-family:Tahoma,Arial,sans-serif;
 }
-header{
- background:#087b58;color:white;padding:18px
+.page{
+  max-width:760px;margin:18px auto;padding:18px;
+  border:5px solid #00843d;border-radius:35px;
+  background:#0d1830;
 }
-h1{margin:5px;font-size:27px}
-.card{
- max-width:900px;margin:18px auto;background:white;
- padding:18px;border-radius:20px;
- box-shadow:0 4px 18px #0002
+h1{
+  color:#09a653;text-align:center;
+  font-size:31px;margin:5px 0 8px;
 }
-canvas{
- width:100%;max-width:650px;
- border:2px solid #087b58;border-radius:15px;
- background:#fff
+.sub{text-align:center;font-size:18px;margin-bottom:20px}
+.graphbox{
+  background:#0d1830;border:1px solid #43516a;
+  border-radius:22px;padding:10px;
 }
+canvas{width:100%;height:auto;display:block}
+.buttons{display:flex;gap:12px;margin:15px 0 20px}
 button{
- background:#087b58;color:white;border:0;
- padding:12px 20px;margin:8px;border-radius:12px;
- font-size:17px
+  flex:1;border:0;border-radius:13px;padding:14px;
+  font-size:19px;font-weight:bold;color:#fff;
+  background:#33465f;cursor:pointer
 }
-.teacher{
- font-size:19px;font-weight:bold;margin:15px
+.draw{background:#00843d}
+.title{
+  border-right:6px solid #00a650;
+  padding-right:10px;font-size:22px;font-weight:bold;
+  margin:20px 0 12px
+}
+.item{
+  position:relative;background:#1c2b43;
+  border:1px solid #40516a;border-radius:12px;
+  padding:12px 60px 12px 15px;margin:9px 0;
+  min-height:68px;cursor:pointer;
+  transition:.2s
+}
+.item:hover,.item.active{
+  border-color:#32d77b;background:#243a55
+}
+.num{
+  position:absolute;right:14px;top:17px;
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#314158;font-weight:bold
+}
+.eq{
+  direction:ltr;text-align:right;color:#42c47d;
+  font-family:monospace;font-size:17px;line-height:1.5
+}
+.footer{
+  text-align:center;color:#24bd69;
+  font-size:20px;font-weight:bold;margin:25px 0 8px
 }
 </style>
 </head>
 
 <body>
+<div class="page">
 
-<header>
-<h1>🇸🇦 اليوم الوطني السعودي ٩٦ 🇸🇦</h1>
-<div>الرياضيات في حب الوطن</div>
-</header>
+<h1>اليوم الوطني السعودي 96 🇸🇦</h1>
+<div class="sub">مثّلي المتباينات على المستوى الإحداثي واكتشفي الشكل الناتج</div>
 
-<div class="card">
-<h2>تمثيل المتباينات لتكوين الرقم ٩٦</h2>
-
-<p>
-مثّلي المتباينات على المستوى الإحداثي، ثم اكتشفي الشكل الناتج ✨
-</p>
-
-<canvas id="graph" width="650" height="500"></canvas>
-
-<div>
-<button onclick="draw96()">إظهار الحل ٩٦</button>
-<button onclick="clearGraph()">إخفاء الحل</button>
+<div class="graphbox">
+<canvas id="graph" width="680" height="520"></canvas>
 </div>
 
-<h3>متباينات النشاط</h3>
+<div class="buttons">
+<button class="draw" onclick="drawAll()">رسم الكل</button>
+<button onclick="clearAll()">مسح الكل</button>
+</div>
 
-<p>
-① y ≥ -0.8x + 5 &nbsp;&nbsp; y ≤ 0.8x + 13
-</p>
+<div class="title">المجموعة الأولى</div>
 
-<p>
-② y ≥ 0.8x - 11 &nbsp;&nbsp; y ≤ -0.8x + 29
-</p>
+<div class="item" onclick="toggle(0,this)">
+ <span class="num">1</span>
+ <div class="eq">-8 ≤ x ≤ -2<br>-4 ≤ y ≤ -3</div>
+</div>
 
-<p>
-③ x ≥ -8 &nbsp;&nbsp; x ≤ -2
-</p>
+<div class="item" onclick="toggle(1,this)">
+ <span class="num">2</span>
+ <div class="eq">-3 ≤ x ≤ -2<br>-3 ≤ y ≤ 4</div>
+</div>
 
-<p>
-④ y ≥ -6 &nbsp;&nbsp; y ≤ 6
-</p>
+<div class="item" onclick="toggle(2,this)">
+ <span class="num">3</span>
+ <div class="eq">-8 ≤ x ≤ -3<br>3 ≤ y ≤ 4</div>
+</div>
 
-<p>💚 دام عزك يا وطن 💚</p>
+<div class="item" onclick="toggle(3,this)">
+ <span class="num">4</span>
+ <div class="eq">-8 ≤ x ≤ -7<br>0 ≤ y ≤ 3</div>
+</div>
 
-<div class="teacher">
-المعلمة: أفنان الأحمدي
+<div class="item" onclick="toggle(4,this)">
+ <span class="num">5</span>
+ <div class="eq">-7 ≤ x ≤ -3<br>0 ≤ y ≤ 1</div>
+</div>
+
+<div class="title">المجموعة الثانية</div>
+
+<div class="item" onclick="toggle(5,this)">
+ <span class="num">6</span>
+ <div class="eq">2 ≤ x ≤ 8<br>3 ≤ y ≤ 4</div>
+</div>
+
+<div class="item" onclick="toggle(6,this)">
+ <span class="num">7</span>
+ <div class="eq">2 ≤ x ≤ 3<br>-4 ≤ y ≤ 3</div>
+</div>
+
+<div class="item" onclick="toggle(7,this)">
+ <span class="num">8</span>
+ <div class="eq">3 ≤ x ≤ 8<br>-4 ≤ y ≤ -3</div>
+</div>
+
+<div class="item" onclick="toggle(8,this)">
+ <span class="num">9</span>
+ <div class="eq">7 ≤ x ≤ 8<br>-3 ≤ y ≤ 0</div>
+</div>
+
+<div class="item" onclick="toggle(9,this)">
+ <span class="num">10</span>
+ <div class="eq">3 ≤ x ≤ 7<br>-1 ≤ y ≤ 0</div>
+</div>
+
+<div class="footer">
+💚 دام عزك يا وطن 💚<br><br>
+إعداد المعلمة: أفنان الأحمدي
 </div>
 
 </div>
 
 <script>
-const c=document.getElementById("graph");
-const ctx=c.getContext("2d");
+const canvas=document.getElementById("graph");
+const ctx=canvas.getContext("2d");
+
+const W=canvas.width,H=canvas.height;
+const xmin=-10,xmax=10,ymin=-6,ymax=6;
+
+const shapes=[
+[-8,-2,-4,-3],
+[-3,-2,-3,4],
+[-8,-3,3,4],
+[-8,-7,0,3],
+[-7,-3,0,1],
+
+[2,8,3,4],
+[2,3,-4,3],
+[3,8,-4,-3],
+[7,8,-3,0],
+[3,7,-1,0]
+];
+
+let active=new Array(10).fill(false);
+
+function X(x){return (x-xmin)/(xmax-xmin)*W}
+function Y(y){return H-(y-ymin)/(ymax-ymin)*H}
 
 function grid(){
- ctx.clearRect(0,0,c.width,c.height);
- ctx.strokeStyle="#ddd";
+ ctx.clearRect(0,0,W,H);
+ ctx.fillStyle="#0d1830";
+ ctx.fillRect(0,0,W,H);
+
  ctx.lineWidth=1;
+ ctx.strokeStyle="#1c2b43";
 
- for(let x=25;x<c.width;x+=25){
-  ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,c.height);ctx.stroke();
+ for(let x=xmin;x<=xmax;x++){
+   ctx.beginPath();
+   ctx.moveTo(X(x),0);
+   ctx.lineTo(X(x),H);
+   ctx.stroke();
  }
 
- for(let y=25;y<c.height;y+=25){
-  ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(c.width,y);ctx.stroke();
+ for(let y=ymin;y<=ymax;y++){
+   ctx.beginPath();
+   ctx.moveTo(0,Y(y));
+   ctx.lineTo(W,Y(y));
+   ctx.stroke();
  }
 
- ctx.strokeStyle="#555";
+ ctx.strokeStyle="#9aa5b5";
  ctx.lineWidth=2;
 
  ctx.beginPath();
- ctx.moveTo(c.width/2,0);
- ctx.lineTo(c.width/2,c.height);
+ ctx.moveTo(X(0),0);
+ ctx.lineTo(X(0),H);
  ctx.stroke();
 
  ctx.beginPath();
- ctx.moveTo(0,c.height/2);
- ctx.lineTo(c.width,c.height/2);
+ ctx.moveTo(0,Y(0));
+ ctx.lineTo(W,Y(0));
  ctx.stroke();
 }
 
-function draw96(){
- grid();
+function rectangle(s){
+ const [x1,x2,y1,y2]=s;
 
- ctx.strokeStyle="#087b58";
- ctx.lineWidth=18;
- ctx.lineCap="round";
+ const left=X(x1);
+ const right=X(x2);
+ const top=Y(y2);
+ const bottom=Y(y1);
 
- // الرقم 9
- ctx.beginPath();
- ctx.arc(220,190,75,0,Math.PI*2);
- ctx.stroke();
+ ctx.fillStyle="rgba(0,170,80,.72)";
+ ctx.strokeStyle="#42e88b";
+ ctx.lineWidth=2;
 
- ctx.beginPath();
- ctx.moveTo(285,210);
- ctx.quadraticCurveTo(285,330,195,365);
- ctx.stroke();
-
- // الرقم 6
- ctx.beginPath();
- ctx.moveTo(465,130);
- ctx.quadraticCurveTo(365,175,385,310);
- ctx.stroke();
-
- ctx.beginPath();
- ctx.arc(450,310,72,0,Math.PI*2);
- ctx.stroke();
+ ctx.fillRect(left,top,right-left,bottom-top);
+ ctx.strokeRect(left,top,right-left,bottom-top);
 }
 
-function clearGraph(){
+function redraw(){
  grid();
+ shapes.forEach((s,i)=>{
+   if(active[i]) rectangle(s);
+ });
+}
+
+function toggle(i,el){
+ active[i]=!active[i];
+ el.classList.toggle("active",active[i]);
+ redraw();
+}
+
+function drawAll(){
+ active.fill(true);
+ document.querySelectorAll(".item").forEach(x=>x.classList.add("active"));
+ redraw();
+}
+
+function clearAll(){
+ active.fill(false);
+ document.querySelectorAll(".item").forEach(x=>x.classList.remove("active"));
+ redraw();
 }
 
 grid();
